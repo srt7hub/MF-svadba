@@ -505,8 +505,8 @@ export default function App() {
 
           <div className="relative flex flex-col items-center w-full">
             {/* Description */}
-            <p className="font-serif text-[15px] font-light tracking-[0.05em] text-[#222]/90 leading-[1.8] mb-12 mt-2">
-              Если у вас возникнут вопросы,<br/>мы всегда будем рады помочь.
+            <p className="font-serif text-[17px] font-light tracking-[0.05em] text-[#222]/90 leading-[1.8] mb-12 mt-2 max-w-[300px] [text-wrap:balance]">
+              Если у вас возникнут вопросы, мы всегда будем рады помочь.
             </p>
 
             {/* Phone numbers section */}
@@ -518,18 +518,18 @@ export default function App() {
 
               {/* Left Column */}
               <div className="flex flex-1 flex-col items-center pr-2 sm:pr-4">
-                <span className="font-serif text-[13px] uppercase tracking-[0.2em] text-[#222] mb-3">Марат</span>
+                <span className="font-serif text-[15px] uppercase tracking-[0.2em] text-[#222] mb-3">Марат</span>
                 <div className="h-[1px] w-[20px] bg-[#7A7A6A]/30 mb-4"></div>
-                <a href="tel:+79279251330" className="font-serif text-[13px] sm:text-[15px] font-light tracking-[0.05em] text-[#5A5A4A] hover:opacity-70 transition-opacity">
+                <a href="tel:+79279251330" className="font-serif text-[15px] sm:text-[17px] font-light tracking-[0.05em] text-[#5A5A4A] hover:opacity-70 transition-opacity">
                   +7 (927) 925-13-30
                 </a>
               </div>
 
               {/* Right Column */}
               <div className="flex flex-1 flex-col items-center pl-2 sm:pl-4">
-                <span className="font-serif text-[13px] uppercase tracking-[0.2em] text-[#222] mb-3">Фирюза</span>
+                <span className="font-serif text-[15px] uppercase tracking-[0.2em] text-[#222] mb-3">Фирюза</span>
                 <div className="h-[1px] w-[20px] bg-[#7A7A6A]/30 mb-4"></div>
-                <a href="tel:+79273573030" className="font-serif text-[13px] sm:text-[15px] font-light tracking-[0.05em] text-[#5A5A4A] hover:opacity-70 transition-opacity">
+                <a href="tel:+79273573030" className="font-serif text-[15px] sm:text-[17px] font-light tracking-[0.05em] text-[#5A5A4A] hover:opacity-70 transition-opacity">
                   +7 (927) 357-30-30
                 </a>
               </div>
