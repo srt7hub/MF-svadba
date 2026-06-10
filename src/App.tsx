@@ -160,7 +160,7 @@ export default function App() {
           </div>
 
           {/* Text */}
-          <div className="mx-auto flex w-full max-w-[290px] flex-col gap-6 font-serif text-[15px] font-light leading-[1.7] tracking-[0.02em] opacity-90 text-[#222]">
+          <div className="mx-auto flex w-full max-w-[300px] flex-col gap-6 font-serif text-[17px] font-light leading-[1.7] tracking-[0.02em] opacity-90 text-[#222]">
             <p>
               С большой радостью приглашаем вас<br/>на наш семейный праздник – нашу свадьбу!
             </p>
@@ -239,7 +239,7 @@ export default function App() {
           </div>
           
           {/* Address */}
-          <div className="mt-3 font-serif text-[15px] font-light tracking-[0.05em] text-[#222]">
+          <div className="mt-3 font-serif text-[17px] font-light tracking-[0.05em] text-[#222]">
             Проспект Октября, 79/1
           </div>
 
@@ -304,7 +304,7 @@ export default function App() {
             </h2>
           </div>
 
-          <p className="mt-3 font-serif text-[15px] font-light tracking-[0.05em] text-[#222]/80">
+          <p className="mt-3 font-serif text-[17px] font-light tracking-[0.05em] text-[#222]/80">
             {timeLeft > 0 ? "Осталось совсем немного времени" : "Этот день настал"}
           </p>
 
