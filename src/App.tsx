@@ -42,7 +42,7 @@ export default function App() {
 
   return (
     <div className="flex min-h-[100dvh] w-full bg-[#EAE8E3]">
-      <div className="mx-auto w-full max-w-[430px] bg-white font-sans text-[#222] shadow-2xl selection:bg-[#7A7A6A]/20">
+      <div className="mx-auto w-full max-w-[430px] bg-[#EDEFF1] font-sans text-[#222] shadow-2xl selection:bg-[#7A7A6A]/20">
       {/* --- HERO SCREEN --- */}
       <section className="relative h-[100dvh] w-full overflow-hidden bg-[#0d140d] text-white selection:bg-white/20" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
         {/* Background Image Container */}
@@ -117,7 +117,7 @@ export default function App() {
       </section>
 
       {/* --- INVITATION SCREEN --- */}
-      <section className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-white px-6 pt-24 pb-8 text-[#222]">
+      <section className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-[#EDEFF1] px-6 pt-24 pb-8 text-[#222]">
         {/* Paper Texture */}
         <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.25] mix-blend-multiply">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -204,7 +204,7 @@ export default function App() {
       </section>
 
       {/* --- LOCATION SCREEN --- */}
-      <section className="relative flex w-full flex-col items-center pt-8 pb-16 bg-white text-[#222] overflow-hidden">
+      <section className="relative flex w-full flex-col items-center pt-8 pb-16 bg-[#EDEFF1] text-[#222] overflow-hidden">
         {/* Paper Texture */}
         <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.25] mix-blend-multiply">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -244,7 +244,7 @@ export default function App() {
           </div>
 
           {/* Triptych Image — full-bleed, side panels run to the screen edges */}
-          <div className="relative mt-12 -mx-6 w-[calc(100%+48px)] h-[420px] bg-white sm:h-[460px]">
+          <div className="relative mt-12 -mx-6 w-[calc(100%+48px)] h-[420px] bg-[#EDEFF1] sm:h-[460px]">
             <img
               src="/qw1.webp"
               alt="Интерьер Pravda Hall"
@@ -252,14 +252,14 @@ export default function App() {
               loading="lazy"
             />
             {/* Vertical gaps between the three panels */}
-            <div className="absolute left-[33.333%] top-0 bottom-0 w-[6px] -translate-x-1/2 bg-white" />
-            <div className="absolute left-[66.666%] top-0 bottom-0 w-[6px] -translate-x-1/2 bg-white" />
+            <div className="absolute left-[33.333%] top-0 bottom-0 w-[6px] -translate-x-1/2 bg-[#EDEFF1]" />
+            <div className="absolute left-[66.666%] top-0 bottom-0 w-[6px] -translate-x-1/2 bg-[#EDEFF1]" />
 
             {/* Top & bottom cutouts: shorten the two side panels so the center one stands taller */}
-            <div className="absolute left-0 top-0 w-1/3 h-[3%] bg-white" />
-            <div className="absolute left-0 bottom-0 w-1/3 h-[3%] bg-white" />
-            <div className="absolute right-0 top-0 w-1/3 h-[3%] bg-white" />
-            <div className="absolute right-0 bottom-0 w-1/3 h-[3%] bg-white" />
+            <div className="absolute left-0 top-0 w-1/3 h-[3%] bg-[#EDEFF1]" />
+            <div className="absolute left-0 bottom-0 w-1/3 h-[3%] bg-[#EDEFF1]" />
+            <div className="absolute right-0 top-0 w-1/3 h-[3%] bg-[#EDEFF1]" />
+            <div className="absolute right-0 bottom-0 w-1/3 h-[3%] bg-[#EDEFF1]" />
           </div>
 
           {/* Map Button */}
@@ -275,7 +275,7 @@ export default function App() {
       </section>
 
       {/* --- COUNTDOWN SCREEN --- */}
-      <section className="relative flex w-full flex-col items-center pt-12 pb-16 bg-white text-[#222] overflow-hidden">
+      <section className="relative flex w-full flex-col items-center pt-12 pb-16 bg-[#EDEFF1] text-[#222] overflow-hidden">
         {/* Paper Texture */}
         <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.25] mix-blend-multiply">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -361,7 +361,7 @@ export default function App() {
       </section>
 
       {/* --- TIMING SCREEN --- */}
-      <section className="relative flex w-full flex-col items-center pt-12 pb-16 bg-white text-[#222] overflow-hidden">
+      <section className="relative flex w-full flex-col items-center pt-12 pb-16 bg-[#EDEFF1] text-[#222] overflow-hidden">
         {/* Paper Texture */}
         <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.25] mix-blend-multiply">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -404,7 +404,7 @@ export default function App() {
                 <div className="w-1/2 text-right pr-[48px] sm:pr-[56px]">
                   <span className="font-serif text-[34px] font-light tracking-[0.05em] text-[#222]">14:30</span>
                 </div>
-                <div className="absolute left-1/2 top-1/2 w-[72px] h-[72px] shrink-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-white z-10">
+                <div className="absolute left-1/2 top-1/2 w-[72px] h-[72px] shrink-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-[#EDEFF1] z-10">
                    <img src={timingGlasses} alt="Сбор гостей" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div className="w-1/2 text-left pl-[48px] sm:pl-[56px]">
@@ -420,7 +420,7 @@ export default function App() {
                 <div className="w-1/2 text-right pr-[48px] sm:pr-[56px]">
                   <span className="font-serif text-[34px] font-light tracking-[0.05em] text-[#222]">15:00</span>
                 </div>
-                <div className="absolute left-1/2 top-1/2 w-[72px] h-[72px] shrink-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-white z-10">
+                <div className="absolute left-1/2 top-1/2 w-[72px] h-[72px] shrink-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-[#EDEFF1] z-10">
                    <img src={timingFlowers} alt="Церемония бракосочетания" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div className="w-1/2 text-left pl-[48px] sm:pl-[56px]">
@@ -439,7 +439,7 @@ export default function App() {
                 <div className="w-1/2 text-right pr-[48px] sm:pr-[56px]">
                   <span className="font-serif text-[34px] font-light tracking-[0.05em] text-[#222]">16:00</span>
                 </div>
-                <div className="absolute left-1/2 top-1/2 w-[72px] h-[72px] shrink-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-white z-10">
+                <div className="absolute left-1/2 top-1/2 w-[72px] h-[72px] shrink-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-[#EDEFF1] z-10">
                    <img src={timingTable} alt="Свадебный банкет" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div className="w-1/2 text-left pl-[48px] sm:pl-[56px]">
@@ -458,7 +458,7 @@ export default function App() {
                 <div className="w-1/2 text-right pr-[48px] sm:pr-[56px]">
                   <span className="font-serif text-[34px] font-light tracking-[0.05em] text-[#222]">23:00</span>
                 </div>
-                <div className="absolute left-1/2 top-1/2 w-[72px] h-[72px] shrink-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-white z-10">
+                <div className="absolute left-1/2 top-1/2 w-[72px] h-[72px] shrink-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-[#EDEFF1] z-10">
                    <img src={timingCandles} alt="Завершение вечера" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div className="w-1/2 text-left pl-[48px] sm:pl-[56px]">
@@ -474,7 +474,7 @@ export default function App() {
       </section>
 
       {/* --- CONTACT SCREEN --- */}
-      <section className="relative flex w-full flex-col items-center pt-12 pb-24 bg-white text-[#222] overflow-hidden">
+      <section className="relative flex w-full flex-col items-center pt-12 pb-24 bg-[#EDEFF1] text-[#222] overflow-hidden">
         {/* Paper Texture */}
         <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.25] mix-blend-multiply">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
