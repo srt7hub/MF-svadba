@@ -160,12 +160,12 @@ export default function App() {
           </div>
 
           {/* Text */}
-          <div className="mx-auto flex w-full max-w-[300px] flex-col gap-6 font-serif text-[17px] font-light leading-[1.7] tracking-[0.02em] opacity-90 text-[#222]">
+          <div className="mx-auto flex w-full max-w-[310px] flex-col gap-6 font-serif text-[17px] font-light leading-[1.7] tracking-[0.02em] opacity-90 text-[#222] [text-wrap:balance]">
             <p>
-              С большой радостью приглашаем вас<br/>на наш семейный праздник – нашу свадьбу!
+              С большой радостью приглашаем вас на наш семейный праздник — нашу свадьбу!
             </p>
             <p>
-              Мы очень хотим, чтобы в этот день с нами<br/>рядом были наши самые близкие люди.
+              Мы очень хотим, чтобы в этот день с нами рядом были наши самые близкие люди.
             </p>
           </div>
 
