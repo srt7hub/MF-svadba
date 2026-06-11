@@ -556,6 +556,50 @@ export default function App() {
         </motion.div>
       </section>
 
+      {/* --- DRESS CODE SCREEN --- */}
+      <section className="relative flex w-full flex-col items-center pt-12 pb-16 bg-[#EDEFF1] text-[#222] overflow-hidden">
+        {/* Paper Texture */}
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.25] mix-blend-multiply">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <filter id="noiseFilterDress">
+              <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="3" stitchTiles="stitch" />
+              <feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.1 0" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#noiseFilterDress)" />
+          </svg>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="relative z-10 flex w-full flex-col items-center px-6 text-center"
+        >
+          {/* Header Group */}
+          <div className="relative mt-4 flex flex-col items-center w-full mb-8">
+            <div className="absolute top-[-50px] left-1/2 z-0 -translate-x-1/2 -rotate-6 select-none font-script text-[68px] leading-none text-[#7A7A6A] opacity-[0.08] sm:text-[78px]">
+              dress code
+            </div>
+            <h2 className="relative z-10 ml-[0.2em] font-serif text-[32px] font-light tracking-[0.2em] uppercase">
+              Дресс-код
+            </h2>
+          </div>
+
+          {/* Ornamental separator */}
+          <div className="mb-8 flex items-center justify-center gap-3">
+            <div className="h-[1px] w-[40px] bg-[#7A7A6A]/30"></div>
+            <div className="h-[5px] w-[5px] rotate-45 bg-[#7A7A6A]/60"></div>
+            <div className="h-[1px] w-[40px] bg-[#7A7A6A]/30"></div>
+          </div>
+
+          {/* Text */}
+          <p className="mx-auto max-w-[300px] font-serif text-[17px] font-normal leading-[1.8] tracking-[0.02em] text-[#222] [text-wrap:balance]">
+            Единых требований к одежде нет — выбирайте наряд по своему вкусу.
+          </p>
+        </motion.div>
+      </section>
+
       {/* --- CONTACT SCREEN --- */}
       <section className="relative flex w-full flex-col items-center pt-12 pb-24 bg-[#EDEFF1] text-[#222] overflow-hidden">
         {/* Paper Texture */}
