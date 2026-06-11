@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, useRef, Fragment } from "react";
 import timingGlasses from "@/src/assets/images/timing_glasses.webp";
 import timingFlowers from "@/src/assets/images/timing_flowers.webp";
 import timingTable from "@/src/assets/images/timing_table.webp";
@@ -23,6 +23,70 @@ export default function App() {
     return () => clearInterval(timer);
   }, [targetDate]);
 
+  // --- Background music ---
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const hasStartedRef = useRef(false);
+
+  // Gently fade the volume in/out to a target level
+  const fadeTo = (target: number, done?: () => void) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const step = (target - audio.volume) / 12;
+    const id = setInterval(() => {
+      if (!audioRef.current) return clearInterval(id);
+      const next = audioRef.current.volume + step;
+      if ((step > 0 && next >= target) || (step < 0 && next <= target)) {
+        audioRef.current.volume = Math.max(0, Math.min(1, target));
+        clearInterval(id);
+        done?.();
+      } else {
+        audioRef.current.volume = Math.max(0, Math.min(1, next));
+      }
+    }, 60);
+  };
+
+  // Start music on the first user interaction (tap / scroll), as browsers require
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    const start = () => {
+      const audio = audioRef.current;
+      if (!audio || hasStartedRef.current) return;
+      hasStartedRef.current = true;
+      audio.volume = 0;
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+          fadeTo(0.4);
+        })
+        .catch(() => {
+          hasStartedRef.current = false;
+        });
+    };
+    window.addEventListener("pointerdown", start, { once: true });
+    window.addEventListener("scroll", start, { once: true, passive: true });
+    return () => {
+      window.removeEventListener("pointerdown", start);
+      window.removeEventListener("scroll", start);
+    };
+  }, [shouldReduceMotion]);
+
+  const toggleMusic = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      fadeTo(0, () => audio.pause());
+      setIsPlaying(false);
+    } else {
+      audio.volume = 0;
+      audio.play().then(() => {
+        setIsPlaying(true);
+        fadeTo(0.4);
+      }).catch(() => {});
+    }
+  };
+
   const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
@@ -42,6 +106,30 @@ export default function App() {
 
   return (
     <div className="flex min-h-[100dvh] w-full bg-[#EAE8E3]">
+      {/* Background music */}
+      <audio ref={audioRef} src="/music.m4a" loop preload="auto" />
+
+      {/* Music toggle button */}
+      <button
+        onClick={toggleMusic}
+        aria-label={isPlaying ? "Выключить музыку" : "Включить музыку"}
+        className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/40 bg-black/30 text-white backdrop-blur-md transition-colors hover:bg-black/45"
+      >
+        {isPlaying ? (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M11 5 6 9H2v6h4l5 4V5z" />
+            <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+            <path d="M19 5a9 9 0 0 1 0 14" />
+          </svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M11 5 6 9H2v6h4l5 4V5z" />
+            <line x1="22" y1="9" x2="16" y2="15" />
+            <line x1="16" y1="9" x2="22" y2="15" />
+          </svg>
+        )}
+      </button>
+
       <div className="mx-auto w-full max-w-[430px] bg-[#EDEFF1] font-sans text-[#222] shadow-2xl selection:bg-[#7A7A6A]/20">
       {/* --- HERO SCREEN --- */}
       <section className="relative h-[100dvh] w-full overflow-hidden bg-[#0d140d] text-white selection:bg-white/20" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
@@ -160,7 +248,7 @@ export default function App() {
           </div>
 
           {/* Text */}
-          <div className="mx-auto flex w-full max-w-[310px] flex-col gap-6 font-serif text-[17px] font-light leading-[1.7] tracking-[0.02em] opacity-90 text-[#222] [text-wrap:balance]">
+          <div className="mx-auto flex w-full max-w-[310px] flex-col gap-6 font-serif text-[17px] font-normal leading-[1.7] tracking-[0.02em] text-[#222] [text-wrap:balance]">
             <p>
               С большой радостью приглашаем вас на наш семейный праздник — нашу свадьбу!
             </p>
@@ -243,27 +331,15 @@ export default function App() {
             Проспект Октября, 79/1
           </div>
 
-          {/* Triptych Image — full-bleed, side panels run to the screen edges */}
-          <div className="relative mt-12 -mx-6 w-[calc(100%+48px)] h-[420px] bg-[#EDEFF1] sm:h-[460px]">
-            <img
-              src="/qw1.webp"
-              alt="Интерьер Pravda Hall"
-              className="absolute inset-0 h-full w-full object-cover"
-              loading="lazy"
-            />
-            {/* Vertical gaps between the three panels */}
-            <div className="absolute left-[33.333%] top-0 bottom-0 w-[6px] -translate-x-1/2 bg-[#EDEFF1]" />
-            <div className="absolute left-[66.666%] top-0 bottom-0 w-[6px] -translate-x-1/2 bg-[#EDEFF1]" />
-
-            {/* Top & bottom cutouts: shorten the two side panels so the center one stands taller */}
-            <div className="absolute left-0 top-0 w-1/3 h-[3%] bg-[#EDEFF1]" />
-            <div className="absolute left-0 bottom-0 w-1/3 h-[3%] bg-[#EDEFF1]" />
-            <div className="absolute right-0 top-0 w-1/3 h-[3%] bg-[#EDEFF1]" />
-            <div className="absolute right-0 bottom-0 w-1/3 h-[3%] bg-[#EDEFF1]" />
+          {/* Ornamental separator */}
+          <div className="mt-10 flex items-center justify-center gap-3">
+            <div className="h-[1px] w-[40px] bg-[#7A7A6A]/30"></div>
+            <div className="h-[5px] w-[5px] rotate-45 bg-[#7A7A6A]/60"></div>
+            <div className="h-[1px] w-[40px] bg-[#7A7A6A]/30"></div>
           </div>
 
           {/* Map Button */}
-          <a 
+          <a
             href="https://yandex.ru/maps/172/ufa/?from=api-maps&ll=56.021375%2C54.773022&mode=routes&origin=jsapi_2_1_79&rtext=~54.773022%2C56.021375&rtt=auto&ruri=~&utm_source=jsapi&z=15" 
             target="_blank"
             rel="noopener noreferrer"
@@ -505,7 +581,7 @@ export default function App() {
 
           <div className="relative flex flex-col items-center w-full">
             {/* Description */}
-            <p className="font-serif text-[17px] font-light tracking-[0.05em] text-[#222]/90 leading-[1.8] mb-12 mt-2 max-w-[300px] [text-wrap:balance]">
+            <p className="font-serif text-[17px] font-normal tracking-[0.05em] text-[#222] leading-[1.8] mb-12 mt-2 max-w-[300px] [text-wrap:balance]">
               Если у вас возникнут вопросы, мы всегда будем рады помочь.
             </p>
 
