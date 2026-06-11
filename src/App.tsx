@@ -27,23 +27,29 @@ export default function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const hasStartedRef = useRef(false);
+  const fadeIdRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Gently fade the volume in/out to a target level
+  // Gently fade the volume to a target level. Cancels any fade already in progress.
   const fadeTo = (target: number, done?: () => void) => {
     const audio = audioRef.current;
     if (!audio) return;
-    const step = (target - audio.volume) / 12;
-    const id = setInterval(() => {
-      if (!audioRef.current) return clearInterval(id);
-      const next = audioRef.current.volume + step;
-      if ((step > 0 && next >= target) || (step < 0 && next <= target)) {
-        audioRef.current.volume = Math.max(0, Math.min(1, target));
-        clearInterval(id);
+    if (fadeIdRef.current) clearInterval(fadeIdRef.current);
+    fadeIdRef.current = setInterval(() => {
+      const a = audioRef.current;
+      if (!a) {
+        if (fadeIdRef.current) clearInterval(fadeIdRef.current);
+        return;
+      }
+      const diff = target - a.volume;
+      if (Math.abs(diff) <= 0.04) {
+        a.volume = Math.max(0, Math.min(1, target));
+        if (fadeIdRef.current) clearInterval(fadeIdRef.current);
+        fadeIdRef.current = null;
         done?.();
       } else {
-        audioRef.current.volume = Math.max(0, Math.min(1, next));
+        a.volume = Math.max(0, Math.min(1, a.volume + diff * 0.25));
       }
-    }, 60);
+    }, 50);
   };
 
   // Start music on the first user interaction (tap / scroll), as browsers require
@@ -75,9 +81,10 @@ export default function App() {
   const toggleMusic = () => {
     const audio = audioRef.current;
     if (!audio) return;
+    hasStartedRef.current = true; // user took control; disable the auto-start handler
     if (isPlaying) {
-      fadeTo(0, () => audio.pause());
       setIsPlaying(false);
+      fadeTo(0, () => audio.pause());
     } else {
       audio.volume = 0;
       audio.play().then(() => {
