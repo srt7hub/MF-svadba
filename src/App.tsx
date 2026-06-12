@@ -194,19 +194,24 @@ export default function App() {
           </div>
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator — mouse with running dot + caption */}
         <motion.div
-          className="absolute bottom-12 flex flex-col items-center"
+          className="absolute bottom-10 flex flex-col items-center text-white"
           initial={{ opacity: 0 }}
-          animate={{ opacity: shouldReduceMotion ? 0.4 : [0.2, 0.6, 0.2], y: shouldReduceMotion ? 0 : [0, 8, 0] }}
-          transition={{
-            opacity: shouldReduceMotion ? { duration: 2, delay: 2.5 } : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 2.5 },
-            y: { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 2.5 },
-          }}
+          animate={{ opacity: 0.75 }}
+          transition={{ duration: 2, delay: 2.5 }}
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-            <path d="M6 9l6 6 6-6" />
-          </svg>
+          <span className="mb-3 ml-[0.3em] text-[10px] uppercase tracking-[0.3em]">Листайте вниз</span>
+
+          {/* Mouse outline */}
+          <div className="relative h-[34px] w-[21px] rounded-full border border-white/70">
+            {/* Running dot */}
+            <motion.div
+              className="absolute left-1/2 top-[6px] h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-white"
+              animate={shouldReduceMotion ? {} : { y: [0, 11, 0], opacity: [1, 0.2, 1] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
         </motion.div>
       </div>
       </section>
