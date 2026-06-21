@@ -260,7 +260,7 @@ export default function App() {
           </div>
 
           {/* Text */}
-          <div className="mx-auto flex w-full max-w-[310px] flex-col gap-6 font-serif text-[17px] font-normal leading-[1.7] tracking-[0.02em] text-[#222] [text-wrap:balance]">
+          <div className="mx-auto flex w-full max-w-[310px] flex-col gap-6 font-serif text-[19px] font-medium leading-[1.7] tracking-[0.02em] text-[#222] [text-wrap:balance]">
             <p>
               С большой радостью приглашаем вас на наш семейный праздник — нашу свадьбу!
             </p>
@@ -339,7 +339,7 @@ export default function App() {
           </div>
           
           {/* Address */}
-          <div className="mt-3 font-serif text-[17px] font-light tracking-[0.05em] text-[#222]">
+          <div className="mt-3 font-serif text-[19px] font-medium tracking-[0.05em] text-[#222]">
             Проспект Октября, 79/1
           </div>
 
@@ -392,7 +392,7 @@ export default function App() {
             </h2>
           </div>
 
-          <p className="mt-3 font-serif text-[17px] font-light tracking-[0.05em] text-[#222]/80">
+          <p className="mt-3 font-serif text-[19px] font-medium tracking-[0.05em] text-[#222]/80">
             {timeLeft > 0 ? "Осталось совсем немного времени" : "Этот день настал"}
           </p>
 
@@ -599,7 +599,7 @@ export default function App() {
           </div>
 
           {/* Text */}
-          <p className="mx-auto max-w-[300px] font-serif text-[17px] font-normal leading-[1.8] tracking-[0.02em] text-[#222] [text-wrap:balance]">
+          <p className="mx-auto max-w-[300px] font-serif text-[19px] font-medium leading-[1.8] tracking-[0.02em] text-[#222] [text-wrap:balance]">
             Единых требований к одежде нет — выбирайте наряд по своему вкусу.
           </p>
         </motion.div>
@@ -637,7 +637,7 @@ export default function App() {
 
           <div className="relative flex flex-col items-center w-full">
             {/* Description */}
-            <p className="font-serif text-[17px] font-normal tracking-[0.05em] text-[#222] leading-[1.8] mb-12 mt-2 max-w-[300px] [text-wrap:balance]">
+            <p className="font-serif text-[19px] font-medium tracking-[0.05em] text-[#222] leading-[1.8] mb-12 mt-2 max-w-[300px] [text-wrap:balance]">
               Если у вас возникнут вопросы, мы всегда будем рады помочь.
             </p>
 
@@ -702,7 +702,7 @@ export default function App() {
               thank you
             </div>
             
-            <p className="relative z-10 font-serif text-[15px] sm:text-[17px] font-light tracking-[0.05em] text-[#EAE8E3]/95 leading-[1.8]">
+            <p className="relative z-10 font-serif text-[17px] sm:text-[19px] font-medium tracking-[0.05em] text-[#EAE8E3]/95 leading-[1.8]">
               Спасибо,<br/>что разделите этот день с нами
             </p>
           </motion.div>
