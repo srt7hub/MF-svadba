@@ -496,7 +496,7 @@ export default function App() {
                    <img src={timingGlasses} alt="Сбор гостей" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div className="w-1/2 text-left pl-[48px] sm:pl-[56px]">
-                  <span className="font-serif text-[11px] uppercase tracking-[0.15em] text-[#222]">Сбор гостей</span>
+                  <span className="font-serif text-[13px] font-medium uppercase tracking-[0.15em] text-[#222]">Сбор гостей</span>
                 </div>
               </div>
 
@@ -512,7 +512,7 @@ export default function App() {
                    <img src={timingFlowers} alt="Церемония бракосочетания" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div className="w-1/2 text-left pl-[48px] sm:pl-[56px]">
-                  <span className="flex flex-col font-serif text-[11px] uppercase tracking-[0.15em] text-[#222] leading-[1.6]">
+                  <span className="flex flex-col font-serif text-[13px] font-medium uppercase tracking-[0.15em] text-[#222] leading-[1.6]">
                     <span>Церемония</span>
                     <span>бракосочетания</span>
                   </span>
@@ -531,7 +531,7 @@ export default function App() {
                    <img src={timingTable} alt="Свадебный банкет" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div className="w-1/2 text-left pl-[48px] sm:pl-[56px]">
-                  <span className="flex flex-col font-serif text-[11px] uppercase tracking-[0.15em] text-[#222] leading-[1.6]">
+                  <span className="flex flex-col font-serif text-[13px] font-medium uppercase tracking-[0.15em] text-[#222] leading-[1.6]">
                     <span>Свадебный</span>
                     <span>банкет</span>
                   </span>
@@ -550,7 +550,7 @@ export default function App() {
                    <img src={timingCandles} alt="Завершение вечера" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div className="w-1/2 text-left pl-[48px] sm:pl-[56px]">
-                  <span className="flex flex-col font-serif text-[11px] uppercase tracking-[0.15em] text-[#222] leading-[1.6]">
+                  <span className="flex flex-col font-serif text-[13px] font-medium uppercase tracking-[0.15em] text-[#222] leading-[1.6]">
                     <span>Завершение</span>
                     <span>вечера</span>
                   </span>
